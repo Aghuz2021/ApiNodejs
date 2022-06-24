@@ -1,0 +1,268 @@
+# @name login
+//LOGIN COMO ADMIN
+POST http://localhost:8000/login 
+Content-Type: application/json
+
+{
+"nickname":"admin", 
+"psw":"12345"
+}
+###
+# @name login
+//LOGIN COMO CLIENTE
+POST http://localhost:8000/login 
+Content-Type: application/json
+
+{
+		"nickname": "lulaluna",
+		"psw": "1234"
+}
+
+// ---------------------------- PRODUCTOS ---------------------------- //
+//FORMATO product(id, desc, price{USD}, stock, marca, cat, sCat)
+
+// ----------- POST - SOLO ADMIN ----------- //
+### 
+
+POST http://127.0.0.1:8000/prod 
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "desc": "Sombrero agus",
+    "price":80,
+    "stock":5000,
+    "marca":"Universal",
+    "cat":"Undefined",
+    "sCat":"Cabeza"
+    }
+
+// ----------- PUT - SOLO ADMIN ----------- //
+###
+PUT http://localhost:8000/prod/7
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 7,
+    "desc": "Sombrero Clasico Blanco",
+    "price":70,
+    "stock":5000,
+    "marca":"Universal",
+    "cat":"Undefined",
+    "sCat":"Cabeza"
+}
+
+###
+PUT http://localhost:8000/prod/7
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 7,
+    "desc": "Sombrero Clasico Negro",
+    "price":80,
+    "stock":5000,
+    "marca":"Universal",
+    "cat":"Undefined",
+    "sCat":"Cabeza"
+}
+
+// ----------- DELETE - SOLO ADMIN ----------- //
+###
+DELETE http://localhost:8000/prod/1
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+// ---------------------------- CATEGORIAS ---------------------------- //
+//FORMATO categoria(id, desc)
+
+// ----------- POST - SOLO ADMIN ----------- //
+### 
+POST http://127.0.0.1:8000/cat
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 5,
+    "desc": "Most Male"
+}
+
+// ----------- PUT - SOLO ADMIN ----------- //
+###
+PUT http://localhost:8000/cat/4
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id":4,    
+    "desc":"Indefinido"
+}
+
+###
+PUT http://localhost:8000/cat/4
+Content-Type: application/json 
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id":4,    
+    "desc":"Undefined"
+}
+
+// ----------- DELETE - SOLO ADMIN ----------- //
+###
+DELETE http://localhost:8000/cat/5
+Authorization: Bearer {{ login.response.body.token }}
+
+
+// ---------------------------- SUBCATEGORIAS ---------------------------- //
+//FORMATO subcategoria(id, desc)
+
+// ----------- POST - SOLO ADMIN ----------- //
+###
+POST http://127.0.0.1:8000/scat
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "desc": "Cabeza"
+}
+
+
+// ----------- PUT - SOLO ADMIN ----------- //
+###
+PUT http://localhost:8000/scat/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "desc": "Head"
+}
+
+###
+PUT http://localhost:8000/scat/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "desc": "Cabeza"
+}
+
+// ----------- DELETE - SOLO ADMIN ----------- //
+###
+DELETE http://localhost:8000/scat/1
+Authorization: Bearer {{ login.response.body.token }}
+
+
+// ---------------------------- MARCAS ---------------------------- //
+//FORMATO marca(id, nombre)
+
+// ----------- POST - SOLO ADMIN ----------- //
+###
+POST http://127.0.0.1:8000/marca
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "desc": "Universal"
+}
+
+// ----------- PUT - SOLO ADMIN ----------- //
+###
+PUT http://localhost:8000/marca/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id":4,    
+    "desc":"Universal Clothes"
+}
+###
+PUT http://localhost:8000/marca/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id":4,    
+    "desc":"Universal"
+}
+
+// ----------- DELETE - SOLO ADMIN ----------- //
+###
+DELETE http://localhost:8000/marca/1
+Authorization: Bearer {{ login.response.body.token }}
+
+// ---------------------------- USUARIOS ---------------------------- //
+
+
+// ----------- GET DEL USUARIO PROPIO - SOLO USUARIOS LOGEADOS ----------- //
+###
+GET http://localhost:8000/user/me
+Authorization: Bearer {{ login.response.body.token }}
+
+
+// ----------- GET - SOLO ADMIN ----------- //
+###
+GET http://localhost:8000/user
+Authorization: Bearer {{ login.response.body.token }}
+
+###
+GET http://localhost:8000/user/1
+Authorization: Bearer {{ login.response.body.token }}
+
+###
+GET http://localhost:8000/user/permisos/clien
+Authorization: Bearer {{ login.response.body.token }}
+
+
+// ----------- POST - SOLO ADMIN ----------- //
+//FORMATO user(id, nick, nom, ape, email)
+###
+POST http://127.0.0.1:8000/user
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "nick": "gblack223",
+    "nom":"Geremias",
+    "ape":"Johnson",
+    "email":"gjohnson@gmail.com"
+}
+
+
+// ----------- PUT - SOLO ADMIN ----------- //
+###
+PUT http://localhost:8000/user/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "nick": "gblack223",
+    "nom":"Geremias",
+    "ape":"Johnson",
+    "email":"gjohnson@hotmail.com"
+}
+
+###
+PUT http://localhost:8000/user/4
+Content-Type: application/json
+Authorization: Bearer {{ login.response.body.token }}
+
+{
+    "id": 4,
+    "nick": "gblack223",
+    "nom":"Geremias",
+    "ape":"Johnson",
+    "email":"gjohnson@gmail.com"
+}
+
+// ----------- DELETE - SOLO ADMIN ----------- //
+###
+DELETE http://localhost:8000/user/2
+Authorization: Bearer {{ login.response.body.token }}

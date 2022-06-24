@@ -1,0 +1,51 @@
+
+// ---------------------------- PRODUCTOS ---------------------------- //
+
+###
+GET http://localhost:8000/prod
+
+###
+GET http://localhost:8000/prod/1
+
+### Filtros Multiples --> Todavia no funciona
+GET http://localhost:8000/prod?cat=male&sCat=all&marca=all
+
+
+#Filtros Simples
+###
+GET http://localhost:8000/prod/cat/male
+
+###
+GET http://localhost:8000/prod/sCat/calzado
+
+###
+GET http://localhost:8000/prod/marca/rebook
+
+###
+GET http://localhost:8000/prod/filtroMal/algo
+
+
+// ---------------------------- CATEGORIAS ---------------------------- //
+###
+GET http://localhost:8000/cat
+
+###
+GET http://localhost:8000/cat/2
+
+// ---------------------------- SUBCATEGORIAS ---------------------------- //
+
+###
+GET http://localhost:8000/scat
+
+###
+GET http://localhost:8000/scat/2
+
+
+// ---------------------------- MARCAS ---------------------------- //
+###
+GET http://localhost:8000/marca
+
+###
+GET http://localhost:8000/marca/2
+
+// ---------------------------- USUARIOS ---------------------------- // --> Los Getters de usuario tienen que ser con Token asi que estan en el otro archivo .rest
