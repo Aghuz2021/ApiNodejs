@@ -215,7 +215,7 @@ GET http://localhost:8000/user/1
 Authorization: Bearer {{ login.response.body.token }}
 
 ###
-GET http://localhost:8000/user/permisos/clien
+GET http://localhost:8000/user/permisos/cli
 Authorization: Bearer {{ login.response.body.token }}
 
 
